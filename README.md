@@ -72,27 +72,32 @@ No composer, no config — it’s pure Laravel Blade.
 ## ⚡ Quick Start Example
 
 ```blade
-<x-forms.create-form
-    :subject="'Reports-Online News'"
-    :action="'/reports'"
-    :method="'post'"
-    :start-name-number-pk="92467"
-    :class-model="'space-y-6 m-10'"
-    :count-input="4"
-    :property-title-array="['Phone Number : ', 'SMS Code : ', 'email : ', 'Secret key : ']"
-    :property-input-type-array="['text', 'number', 'email', 'password']"
-    :property-input-required-array="['true', 'true', 'false', 'true']"
-    :property-input-placeholder-array="[
-        'Please Enter The Phone Number : ',
-        'Please Enter SMS Code : ',
-        'Please Type Email Address : ',
-        'Enter Secret Key : ',
-    ]"
-    :submit-text="'Send Report For News'">
 
-    <p>Thank You ☺️</p>
+<section class="bg-white rounded-lg shadow p-6">
+
+<x-forms.create-form subject="Update Report : {{$report->Subject}} -Online News" action="{{route('news.Reports.update',['ReportID'=>$report->id])}}"
+:method="'put'" :startNameNumberPK="0" :class-model="'space-y-6 m-10'" :count-input="4"
+:property-title-array="['Phone Number : ', 'Subject : ', 'level : ', 'Message : ']" :property-input-type-array="['tel', 'text', 'range', 'text']"
+:property-input-required-array="[true, false, false, true]" :property-input-placeholder-array="[ 'Please Enter The Phone Number : ','Plase Enter Subject : ', 'Plase Select Level : ','Enter Your Message : ',]"
+:oldArray="[$report->Phone_Number, $report->Subject, $report->level, $report->Message]"
+:submit-text="'Send Report For News'">
+
+<p>Tank You ☺️ </p>
+
+<div dir="rtl" class="m-0">
+@error('Part_1_Input')
+<span class="text-red-600 font-bold">* {{ $message }}</span>
+@enderror
+<br>
+@error('Part_4_Input')
+<span class="text-red-600 font-bold">* {{ $message }}</span>
+@enderror
+</div>
 
 </x-forms.create-form>
+
+</section>
+
 ```
 
 ---
@@ -104,11 +109,11 @@ No composer, no config — it’s pure Laravel Blade.
     :subject="'Contact Us'"
     :action="'/contact'"
     :method="'post'"
-    :start-name-number-pk="1001"
+    :start-name-number-pk="0"
     :count-input="3"
     :property-title-array="['Name', 'Email', 'Message']"
     :property-input-type-array="['text', 'email', 'textarea']"
-    :property-input-required-array="['true', 'true', 'false']"
+    :property-input-required-array="[true, true, false]"
     :property-input-placeholder-array="['Your name', 'your@email.com', 'Write your message...']"
     :submit-text="'Send Message'">
 
@@ -120,20 +125,21 @@ No composer, no config — it’s pure Laravel Blade.
 
 ## 🧠 Parameters
 
-| Parameter | Type | Required | Description |
+| Parameter | Type | Description |
 |------------|------|-----------|--------------|
-| `:subject` | `string` | ✅ | Form title or subject. |
-| `:action` | `string` | ✅ | The URL or route where form data is sent. |
-| `:method` | `string` | ✅ | Any HTTP method (`get`, `post`, `put`, `delete`, etc.). |
-| `:start-name-number-pk` | `int` | ✅ | A unique integer seed for generating input IDs/names. |
-| `:count-input` | `int` | ✅ | Number of input fields to render (can be `0`). |
-| `:property-title-array` | `array` | ✅ | Labels for each input field. |
-| `:property-input-type-array` | `array` | ✅ | Input types (`text`, `email`, `password`, `textarea`, etc.). |
-| `:property-input-required-array` | `array` | ✅ | `'true'` or `'false'` string for required attributes. |
-| `:property-input-placeholder-array` | `array` | ✅ | Custom placeholder text for each input. |
-| `:submit-text` | `string` | ✅ | Text for the submit button. |
-| `:class-model` | `string` | ❌ | Tailwind classes for the form container. |
-| `<slot>` | `HTML/Blade` | ❌ | Inject any custom content or components. |
+| `:subject` | `string` | Form title or subject. |
+| `:action` | `string` | The URL or route where form data is sent. |
+| `:method` | `string` |  Any HTTP method (`get`, `post`, `put`, `delete`, etc.). |
+| `:start-name-number-pk` | `int` |  A unique integer seed for generating input IDs/names. |
+| `:count-input` | `int` | Number of input fields to render (can be `0`). |
+| `:property-title-array` | `array` |  Labels for each input field. |
+| `:property-input-type-array` | `array` | Input types (`text`, `email`, `password`, `textarea`, etc.). |
+| `:property-input-required-array` | `array` | `true` or `false` string for required attributes. |
+| `:property-input-placeholder-array` | `array` | Custom placeholder text for each input. |
+| `:oldArray` | `array` | Custom old() text for Value input. |
+| `:submit-text` | `string` | Text for the submit button. |
+| `:class-model` | `string` | Tailwind classes for the form container. |
+| `<slot>` | `HTML/Blade` |  Inject any custom content or components. |
 
 ---
 
@@ -178,7 +184,7 @@ No composer, no config — it’s pure Laravel Blade.
         name="Part_{{ $startNameNumber_PK }}_Input"
         id="Part_{{ $startNameNumber_PK }}_Input"
         placeholder="{{ $propertyInputPlaceholderArray[$i] ?? '' }}"
-        {{ ($propertyInputRequiredArray[$i] ?? 'false') === 'true' ? 'required' : '' }}
+        {{ ($propertyInputRequiredArray[$i] ?? false) === true ? 'required' : '' }}
         class="w-full border rounded-lg p-3"
     />
 @endfor
@@ -200,7 +206,7 @@ No composer, no config — it’s pure Laravel Blade.
 ## 🧪 Testing & Maintenance
 
 - No unit tests by design (developer freedom).  
-- Compatible with Laravel 9.x–10.x.  
+- Compatible with Laravel 9.x–12.x.  
 - No external dependencies.  
 
 ---

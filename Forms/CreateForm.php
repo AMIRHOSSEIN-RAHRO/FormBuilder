@@ -16,12 +16,13 @@ class CreateForm extends Component
         public string $action = "#",
         public string $method = "post",
         public string $classModel = "space-y-4",
-        public int $countInput = 0,
-        public int $startNameNumber_PK = 8878,
+        public int   $countInput = 0,
+        public int   $startNameNumberPK = 1,
         public array $propertyTitleArray = [],
         public array $propertyInputTypeArray = [],
         public array $propertyInputRequiredArray = [],
         public array $propertyInputPlaceholderArray = [],
+        public array $oldArray = [],
         public string $submitText = "Submit"
     ) {
         //

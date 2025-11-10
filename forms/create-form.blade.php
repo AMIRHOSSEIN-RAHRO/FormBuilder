@@ -26,7 +26,7 @@
             <div class="Part_{{ $startNameNumberPK }}">
                 <label for="Part_{{ $startNameNumberPK }}_Input"
                     class="block text-gray-700 font-semibold mb-1">{{ $propertyTitleArray[0] ?? '' }}</label>
-                <input value="{{ old('Part_' . $startNameNumberPK . '_Input',$oldArray[$i] ?? '' ) }}"
+                <input value="{{ old('Part_' . $startNameNumberPK . '_Input',$oldArray[0] ?? '' ) }}"
                     {{ ($propertyInputRequiredArray[0] ?? false) === true ? 'required' : '' }}
                     type="{{ $propertyInputTypeArray[0] ?? 'text' }}" name="Part_{{ $startNameNumberPK }}_Input"
                     id="Part_{{ $startNameNumberPK }}_Input"

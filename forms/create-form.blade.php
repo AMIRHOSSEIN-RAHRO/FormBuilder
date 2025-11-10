@@ -4,13 +4,12 @@
     @endif
     <form action="{{ $action }}" method="{{ in_array(strtolower($method), ['post', 'get']) ? strtolower($method) : 'post' }}" class="{{ $classModel }}">
         @csrf
-
+        
         @if(!in_array(strtolower($method), ['post', 'get']))
             @method($method)
         @endif
 
         @if ($countInput > 0)
-
             @for ($i = 0; $i < $countInput; $i++)
                 @php $startNameNumberPK++; @endphp
                 <div class="Part_{{ $startNameNumberPK }}">

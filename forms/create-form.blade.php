@@ -32,5 +32,4 @@
             {{ $submitText }}
         </button>
     </form>
-
 </div>

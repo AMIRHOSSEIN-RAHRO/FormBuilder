@@ -1,5 +1,7 @@
 <div>
+    @if(!empty($subject))
     <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ $subject }}</h2>
+    @endif
     <form action="{{ $action }}" method="{{ in_array(strtolower($method), ['post', 'get']) ? strtolower($method) : 'post' }}" class="{{ $classModel }}">
         @csrf
 

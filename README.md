@@ -88,14 +88,7 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
     :submit-text="'Send Report For News'"
 >
     <p>Thank You ☺️</p>
-    <div dir="rtl" class="m-0">
-        @error('Phone_Number')
-            <span class="text-red-600 font-bold">* {{ $message }}</span>
-        @enderror
-        <br>
-        @error('Message')
-            <span class="text-red-600 font-bold">* {{ $message }}</span>
-        @enderror
+
     </div>
 </x-forms.create-form>
 ```
@@ -136,8 +129,6 @@ Similar to create, but pre-fills from model and uses PUT method.
 Inline delete action without fields.
 
 ```blade
-<div class="flex items-center">
-    <a target="_blank" href="{{ route('news.Reports.edit', [$last_feed->id]) }}" class="p-2 bg-gray-500 text-white rounded-sm hover:bg-gray-300">Edit</a>
     <x-forms.create-form 
         :method="'delete'"
         action="{{ route('news.report.delete', [$last_feed->id]) }}"
@@ -149,7 +140,6 @@ Inline delete action without fields.
         :auto-id-start="0"
         :submit-text="'Delete'"
     />
-</div>
 ```
 - **Key Features**: Zero fields, auto-submit name, empty arrays for clean syntax.
 - **Use Case**: Bulk actions or inline deletes.

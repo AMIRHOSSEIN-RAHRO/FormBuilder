@@ -21,10 +21,10 @@ class CreateForm extends Component
         public string $nameSubmit = "",
 
         public bool  $csrf = true,
-        public bool  $autoNameId = false,
+        public bool  $autoNameId = true,
 
         public int   $countInput = 0,
-        public int   $startNameNumberPK = 0,
+        public int   $autoIdStart = 0,
 
         public array $nameArray = [],
         public array $idArray = [],
@@ -33,6 +33,7 @@ class CreateForm extends Component
         public array $propertyInputTypeArray = [],
         public array $propertyInputRequiredArray = [],
         public array $propertyInputPlaceholderArray = [],
+
     ) {
         //
     }

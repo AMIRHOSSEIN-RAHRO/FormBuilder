@@ -147,15 +147,6 @@ Inline delete action without fields.
         :count-input="0"
         :auto-name-id="true"
         :auto-id-start="0"
-        :name-array="[]"
-        :id-array="[]"
-        :old-array="[]"
-        :property-title-array="[]"
-        :property-input-type-array="[]"
-        :property-input-required-array="[]"
-        :property-input-placeholder-array="[]"
-        id-submit=""
-        name-submit=""
         :submit-text="'Delete'"
     />
 </div>

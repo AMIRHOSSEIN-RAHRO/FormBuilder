@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://laravel.com/img/logomark.min.svg" width="80" alt="Laravel Logo">
+</p>
+
+<h1 align="center">Laravel Blade CreateForm Component</h1>
+
+
 # Laravel Rapid Form
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/AMIRHOSSEIN-RAHRO/laravel-rapid-form.svg?style=flat-square)](https://packagist.org/packages/AMIRHOSSEIN-RAHRO/laravel-rapid-form)
@@ -215,3 +222,7 @@ MIT. See [LICENSE.md](LICENSE.md).
 ---
 
 **Questions?** Open an issue. Stars appreciated! ⭐
+
+<p align="center">
+  <b>Made with ❤️ for Laravel developers</b>
+</p>

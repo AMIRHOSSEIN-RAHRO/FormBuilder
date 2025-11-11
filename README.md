@@ -1,10 +1,10 @@
 # Laravel Rapid Form
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/yourname/laravel-rapid-form.svg?style=flat-square)](https://packagist.org/packages/yourname/laravel-rapid-form)
-[![Total Downloads](https://img.shields.io/packagist/dt/yourname/laravel-rapid-form.svg?style=flat-square)](https://packagist.org/packages/yourname/laravel-rapid-form)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/yourname/laravel-rapid-form/check-style.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/yourname/laravel-rapid-form/actions?query=workflow%3A"Check+Code+Style")
-[![Tests Action Status](https://img.shields.io/github/actions/workflow/status/yourname/laravel-rapid-form/run-tests.yml?label=tests&style=flat-square)](https://github.com/yourname/laravel-rapid-form/actions?query=workflow%3A"Run+Tests")
-[![GitHub Issues](https://img.shields.io/github/issues/yourname/laravel-rapid-form.svg?style=flat-square)](https://github.com/yourname/laravel-rapid-form/issues)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/AMIRHOSSEIN-RAHRO/laravel-rapid-form.svg?style=flat-square)](https://packagist.org/packages/AMIRHOSSEIN-RAHRO/laravel-rapid-form)
+[![Total Downloads](https://img.shields.io/packagist/dt/AMIRHOSSEIN-RAHRO/laravel-rapid-form.svg?style=flat-square)](https://packagist.org/packages/AMIRHOSSEIN-RAHRO/laravel-rapid-form)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/AMIRHOSSEIN-RAHRO/FormBuilder/check-style.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/AMIRHOSSEIN-RAHRO/FormBuilder/actions?query=workflow%3A"Check+Code+Style")
+[![Tests Action Status](https://img.shields.io/github/actions/workflow/status/AMIRHOSSEIN-RAHRO/FormBuilder/run-tests.yml?label=tests&style=flat-square)](https://github.com/AMIRHOSSEIN-RAHRO/FormBuilder/actions?query=workflow%3A"Run+Tests")
+[![GitHub Issues](https://img.shields.io/github/issues/AMIRHOSSEIN-RAHRO/FormBuilder.svg?style=flat-square)](https://github.com/AMIRHOSSEIN-RAHRO/FormBuilder/issues)
 
 A highly customizable Blade component for Laravel that lets you create full forms with **one line of code**. Perfect for rapid prototyping, testing, CRUD operations, and admin panels. Supports auto-naming, old() values, validation, and all HTTP methods (including PUT/DELETE spoofing).
 
@@ -22,14 +22,14 @@ This component balances simplicity for beginners with power for pros — avoidin
 
 1. Install via Composer:
    ```
-   composer require yourname/laravel-rapid-form
+   composer require AMIRHOSSEIN-RAHRO/laravel-rapid-form
    ```
 
 2. The package auto-discovers via Laravel's service provider. If not, add to `config/app.php`:
    ```php
    'providers' => [
        // ...
-       YourName\RapidForm\RapidFormServiceProvider::class,
+       AMIRHOSSEIN\RapidForm\RapidFormServiceProvider::class,
    ],
    ```
 
@@ -229,7 +229,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover vulnerabilities, report via [GitHub Issues](https://github.com/yourname/laravel-rapid-form/issues).
+If you discover vulnerabilities, report via [GitHub Issues](https://github.com/AMIRHOSSEIN-RAHRO/FormBuilder/issues).
 
 ## License
 
@@ -237,7 +237,7 @@ MIT. See [LICENSE.md](LICENSE.md).
 
 ## Credits
 
-- Built by [Your Name](https://github.com/yourname).
+- Built by [AMIRHOSSEIN RAHRO](https://github.com/AMIRHOSSEIN-RAHRO).
 - Inspired by Laravel's Blade Components.
 
 ---

@@ -55,8 +55,7 @@ That's it! Now use `<x-forms.create-form>` in your Blade templates.
     action="{{ route('posts.destroy', $post) }}" 
     method="delete" 
     :count-input="0" 
-    submit-text="Delete Post"
-/>
+    submit-text="Delete Post"/>
 ```
 - Renders: Hidden method field, CSRF, and Delete button.
 - Ideal for: Confirmation forms.
@@ -69,7 +68,7 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
 ```blade
 <x-forms.create-form 
     :subject="'Create Report - Online News'"
-    action="{{ route('news.Reports.create') }}"
+     action="{{ route('news.Reports.create') }}"
     :method="'post'"
     :csrf="true"
     :auto-id-start="0"
@@ -82,14 +81,10 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
     :property-input-type-array="['tel', 'text', 'range', 'text']"
     :property-input-required-array="[true, false, false, true]"
     :property-input-placeholder-array="['Please Enter The Phone Number : ', 'Please Enter Subject : ', 'Please Select Level : ', 'Enter Your Message : ']"
-    :old-array="[]"
-    id-submit=""
-    name-submit=""
-    :submit-text="'Send Report For News'"
->
+    :submit-text="'Send Report For News'">
+
     <p>Thank You ☺️</p>
 
-    </div>
 </x-forms.create-form>
 ```
 - **Key Features**: Custom types (tel, range), required fields, placeholders, old() support, slot for errors/thanks.
@@ -115,10 +110,7 @@ Similar to create, but pre-fills from model and uses PUT method.
     :property-input-required-array="[true, false, false, true]"
     :property-input-placeholder-array="['Please Enter The Phone Number : ', 'Please Enter Subject : ', 'Please Select Level : ', 'Enter Your Message : ']"
     :old-array="[$report->Phone_Number, $report->Subject, $report->level, $report->Message]"
-    id-submit=""
-    name-submit=""
-    :submit-text="'Update Report'"
->
+    :submit-text="'Update Report'">
     <p>Thank You ☺️</p>
 </x-forms.create-form>
 ```
@@ -138,8 +130,7 @@ Inline delete action without fields.
         :count-input="0"
         :auto-name-id="true"
         :auto-id-start="0"
-        :submit-text="'Delete'"
-    />
+        :submit-text="'Delete'"/>
 ```
 - **Key Features**: Zero fields, auto-submit name, empty arrays for clean syntax.
 - **Use Case**: Bulk actions or inline deletes.

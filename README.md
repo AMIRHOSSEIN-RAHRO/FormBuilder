@@ -105,14 +105,16 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
  @if($select=="Login")
 {{-- for Login --}}
 
-            <section class="flex flex-col justify-center border-4 border-solid border-[#d6d6d6] p-[35px] pb-[22px] rounded-[8px] ">
-            <x-forms.create-form subject="Sign in" action="{{route('users.auth',['select'=>'Login'])}}"
-            :method="'post'" :class-model="'space-y-6 m-10'" :count-input="2"
-            :auto-name-id="false" :property-name-array="['Gmail', 'Password']" :property-id-array="['Gmail', 'Password']"
-            :property-title-array="['Gmail : ', 'Password : ']" :property-input-type-array="['email', 'password']"
-            :property-input-required-array="[true, true]" :property-input-placeholder-array="[ 'Please Enter Gmail : ','Please Enter Password : ']"
-            :property-old-array="[]"
-            :submit-text="'Next'" :submit-style="'ml-[25%] mt-[17px] bg-blue-700 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-600 transition '" />
+ <section class="flex flex-col justify-center border-4 border-solid border-[#d6d6d6] p-[35px] pb-[22px] rounded-[8px] ">
+
+<x-forms.create-form subject="Sign in" action="{{route('users.auth',['select'=>'Login'])}}"
+:method="'post'" :class-model="'space-y-6 m-10'" :count-input="2"
+:auto-name-id="false" :property-name-array="['Gmail', 'Password']" :property-id-array="['Gmail', 'Password']"
+:property-title-array="['Gmail : ', 'Password : ']" :property-input-type-array="['email', 'password']"
+:property-input-required-array="[true, true]" :property-input-placeholder-array="[ 'Please Enter Gmail : ','Please Enter Password : ']"
+:property-old-array="[]"
+:submit-text="'Next'" :submit-style="'ml-[25%] mt-[17px] bg-blue-700 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-600 transition '" />
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -122,18 +124,24 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
                         </ul>
                     </div>
                 @endif
-            <div> <span>No account? </span>  <a class="text-blue-700" href="{{ route("users.auth.select",["select"=>"Sign"])  }}">Create one!</a></div>
-    </section>
+
+<div> <span>No account? </span>  <a class="text-blue-700" href="{{ route("users.auth.select",["select"=>"Sign"])  }}">Create one!</a></div>
+
+</section>
+
         @else
 {{-- for Regestry --}}
-            <section class="flex flex-col justify-center border-4 border-solid border-[#d6d6d6] p-[12px] pb-[10px] rounded-[8px]  min-w-[30%] max-w-[90%]  justify-items-center">
-                <x-forms.create-form subject="Sign up" action="{{route('users.auth',['select'=>'Sign'])}}"
-                :method="'post'" :class-model="'space-y-6 m-2 text-[15px]'" :count-input="3"
-                :auto-name-id="false" :property-name-array="['Gmail', 'Password','RepeatPassword']" :property-id-array="['Gmail', 'Password','RepeatPassword']"
-                :property-title-array="['Gmail : ', 'Password : ','Repeat Password : ']" :property-input-type-array="['email', 'password','password']"
-                :property-input-required-array="[true, true,true,true]" :property-input-placeholder-array="[ 'Please Enter Gmail : ','Please Enter Password : ', 'Repeat Password : ',]"
-                :property-old-array="[]"
-                :submit-text="'Next'" :submitStyle="'text-[15px] ml-[40%] mt-[0px] mb-4 bg-blue-700 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-600 transition '" />
+
+<section class="flex flex-col justify-center border-4 border-solid border-[#d6d6d6] p-[12px] pb-[10px] rounded-[8px]  min-w-[30%] max-w-[90%]  justify-items-center">
+
+<x-forms.create-form subject="Sign up" action="{{route('users.auth',['select'=>'Sign'])}}"
+:method="'post'" :class-model="'space-y-6 m-2 text-[15px]'" :count-input="3"
+:auto-name-id="false" :property-name-array="['Gmail', 'Password','RepeatPassword']" :property-id-array="['Gmail', 'Password','RepeatPassword']"
+:property-title-array="['Gmail : ', 'Password : ','Repeat Password : ']" :property-input-type-array="['email', 'password','password']"
+:property-input-required-array="[true, true,true,true]" :property-input-placeholder-array="[ 'Please Enter Gmail : ','Please Enter Password : ', 'Repeat Password : ',]"
+:property-old-array="[]"
+:submit-text="'Next'" :submitStyle="'text-[15px] ml-[40%] mt-[0px] mb-4 bg-blue-700 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-600 transition '" />
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -143,8 +151,10 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
                         </ul>
                     </div>
                 @endif
-              <div>  <span>Already have an account?</span>  <a class="text-blue-700" href="{{ route("users.auth.select",["select"=>"Login"])  }}"> Sign in</a></div>
-            </section>
+
+<div>  <span>Already have an account?</span>  <a class="text-blue-700" href="{{ route("users.auth.select",["select"=>"Login"])  }}"> Sign in</a></div>
+
+</section>
 
         @endif
 ```

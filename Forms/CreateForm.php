@@ -19,6 +19,7 @@ class CreateForm extends Component
         public string $submitText = "Submit",
         public string $idSubmit = "",
         public string $nameSubmit = "",
+        public string $submitStyle = "bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition cursor-pointer",
 
         public bool  $csrf = true,
         public bool  $autoNameId = true,
@@ -26,9 +27,9 @@ class CreateForm extends Component
         public int   $countInput = 0,
         public int   $autoIdStart = 0,
 
-        public array $nameArray = [],
-        public array $idArray = [],
-        public array $oldArray = [],
+        public array $propertyNameArray = [],
+        public array $propertyIdArray = [],
+        public array $propertyOldArray = [],
         public array $propertyTitleArray = [],
         public array $propertyInputTypeArray = [],
         public array $propertyInputRequiredArray = [],

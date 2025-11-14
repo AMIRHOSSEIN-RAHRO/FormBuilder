@@ -82,13 +82,13 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
     :class-model="'space-y-6 m-10'"
     :count-input="4"
     :auto-name-id="false"
-    :name-array="['Phone_Number', 'Subject', 'level', 'Message']"
-    :id-array="['Phone_Number', 'Subject', 'level', 'Message']"
+    :property-name-array="['Phone_Number', 'Subject', 'level', 'Message']"
+    :property-id-array="['Phone_Number', 'Subject', 'level', 'Message']"
     :property-title-array="['Phone Number : ', 'Subject : ', 'Level : ', 'Message : ']"
     :property-input-type-array="['tel', 'text', 'range', 'text']"
     :property-input-required-array="[true, false, false, true]"
     :property-input-placeholder-array="['Please Enter The Phone Number : ', 'Please Enter Subject : ', 'Please Select Level : ', 'Enter Your Message : ']"
-    :submit-text="'Send Report For News'">
+     idSubmit="" nameSubmit="" :submit-text="'Send Report For News'">
 
     <p>Thank You ☺️</p>
 
@@ -97,7 +97,59 @@ For a news reporting form with phone, subject, level, and message. Uses manual a
 - **Key Features**: Custom types (tel, range), required fields, placeholders, old() support, slot for errors/thanks.
 - **Use Case**: User submission forms with validation.
 
-### 2. Update Report Form (With Pre-filled Data)
+
+
+### 2. Sign Up & Sign In Full Option -> Page 
+
+```blade
+ @if($select=="Login")
+{{-- for Login --}}
+
+            <section class="flex flex-col justify-center border-4 border-solid border-[#d6d6d6] p-[35px] pb-[22px] rounded-[8px] ">
+            <x-forms.create-form subject="Sign in" action="{{route('users.auth',['select'=>'Login'])}}"
+            :method="'post'" :class-model="'space-y-6 m-10'" :count-input="2"
+            :auto-name-id="false" :property-name-array="['Gmail', 'Password']" :property-id-array="['Gmail', 'Password']"
+            :property-title-array="['Gmail : ', 'Password : ']" :property-input-type-array="['email', 'password']"
+            :property-input-required-array="[true, true]" :property-input-placeholder-array="[ 'Please Enter Gmail : ','Please Enter Password : ']"
+            :property-old-array="[]"
+            :submit-text="'Next'" :submit-style="'ml-[25%] mt-[17px] bg-blue-700 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-600 transition '" />
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li dir="rtl" class="text-red-600 pb-[10px]" >*{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            <div> <span>No account? </span>  <a class="text-blue-700" href="{{ route("users.auth.select",["select"=>"Sign"])  }}">Create one!</a></div>
+    </section>
+        @else
+{{-- for Regestry --}}
+            <section class="flex flex-col justify-center border-4 border-solid border-[#d6d6d6] p-[12px] pb-[10px] rounded-[8px]  min-w-[30%] max-w-[90%]  justify-items-center">
+                <x-forms.create-form subject="Sign up" action="{{route('users.auth',['select'=>'Sign'])}}"
+                :method="'post'" :class-model="'space-y-6 m-2 text-[15px]'" :count-input="3"
+                :auto-name-id="false" :property-name-array="['Gmail', 'Password','RepeatPassword']" :property-id-array="['Gmail', 'Password','RepeatPassword']"
+                :property-title-array="['Gmail : ', 'Password : ','Repeat Password : ']" :property-input-type-array="['email', 'password','password']"
+                :property-input-required-array="[true, true,true,true]" :property-input-placeholder-array="[ 'Please Enter Gmail : ','Please Enter Password : ', 'Repeat Password : ',]"
+                :property-old-array="[]"
+                :submit-text="'Next'" :submitStyle="'text-[15px] ml-[40%] mt-[0px] mb-4 bg-blue-700 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-600 transition '" />
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li dir="rtl" class="text-red-600 pb-[10px]" >*{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+              <div>  <span>Already have an account?</span>  <a class="text-blue-700" href="{{ route("users.auth.select",["select"=>"Login"])  }}"> Sign in</a></div>
+            </section>
+
+        @endif
+```
+
+### 3. Update Report Form (With Pre-filled Data)
 Similar to create, but pre-fills from model and uses PUT method.
 
 ```blade
@@ -110,13 +162,13 @@ Similar to create, but pre-fills from model and uses PUT method.
     :class-model="'space-y-6 m-10'"
     :count-input="4"
     :auto-name-id="false"
-    :name-array="['Phone_Number', 'Subject', 'level', 'Message']"
-    :id-array="['Phone_Number', 'Subject', 'level', 'Message']"
+    :property-name-array="['Phone_Number', 'Subject', 'level', 'Message']"
+    :property-id-array="['Phone_Number', 'Subject', 'level', 'Message']"
     :property-title-array="['Phone Number : ', 'Subject : ', 'Level : ', 'Message : ']"
     :property-input-type-array="['tel', 'text', 'range', 'text']"
     :property-input-required-array="[true, false, false, true]"
     :property-input-placeholder-array="['Please Enter The Phone Number : ', 'Please Enter Subject : ', 'Please Select Level : ', 'Enter Your Message : ']"
-    :old-array="[$report->Phone_Number, $report->Subject, $report->level, $report->Message]"
+    :property-old-array="[$report->Phone_Number, $report->Subject, $report->level, $report->Message]"
     :submit-text="'Update Report'">
     <p>Thank You ☺️</p>
 </x-forms.create-form>
@@ -124,7 +176,7 @@ Similar to create, but pre-fills from model and uses PUT method.
 - **Key Features**: oldArray pre-fills from $report, PUT method spoofing.
 - **Use Case**: Edit forms in admin panels.
 
-### 3. Simple Delete Button Form
+### 4. Simple Delete Button Form
 Inline delete action without fields.
 
 ```blade
@@ -160,9 +212,9 @@ Inline delete action without fields.
 ### 3. **Manual Arrays (Use Only When `auto-name-id=false`)**
 | Attribute | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `name-array` | `array` | `[]` | Input names (`name` attribute). Must match `count-input` length. |
-| `id-array` | `array` | `[]` | Input IDs (`id` attribute). Must match `count-input` length. |
-| `old-array` | `array` | `[]` | Pre-filled values via `old()`. Integrates with Laravel validation. |
+| `property-name-array` | `array` | `[]` | Input names (`name` attribute). Must match `count-input` length. |
+| `property-id-array` | `array` | `[]` | Input IDs (`id` attribute). Must match `count-input` length. |
+| `property-old-array` | `array` | `[]` | Pre-filled values via `old()`. Integrates with Laravel validation. |
 | `property-title-array` | `array` | `[]` | Label texts for each field. Empty = no label. |
 | `property-input-type-array` | `array` | `[]` | Input types (e.g., `text`, `email`, `tel`, `range`). Supports all 21 HTML5 types; defaults to `text`. |
 | `property-input-required-array` | `array` | `[]` | Boolean array for `required`. Only `true` adds the attribute. |
@@ -172,6 +224,7 @@ Inline delete action without fields.
 | Attribute | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `submit-text` | `string` | `"Submit"` | Button label (e.g., "Save", "Delete"). |
+| `submit-style` | `string`| `"bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition cursor-pointer"` | CSS classes for `<submit button>` (e.g., Tailwind spacing).
 | `id-submit` | `string` | `""` | Submit button ID. Auto-generates if empty and `auto-name-id=true`. |
 | `name-submit` | `string` | `""` | Submit button name. Auto-generates if empty and `auto-name-id=true`. |
 
